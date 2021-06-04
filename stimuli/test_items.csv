@@ -1,0 +1,34 @@
+### Test items ###;;;;;;;;;
+index;id;type;text;driftchk;receye;qtext;qdriftchk;qreceye;qanswer
+0;001;CNDA;"Jan en Marie zaten na een lange werkdag samen te wachten in
+de stationsrestauratie in Amsterdam. Jan at een broodje
+met ham, en Marie een koffie met melk. De stemming was
+niet best, omdat de trein meer dan 30 minuten vertraging had.";true;true;Jan at een broodje.;false;false;true
+1;001;CNDB;"Jan en Marie zaten na een lange werkdag samen te wachten in
+de stationsrestauratie in Amsterdam. Jan vroeg een broodje 
+met ham, en Marie een koffie met melk. De stemming was
+niet best, omdat de trein meer dan 30 minuten vertraging had.";true;true;Jan at een broodje.;false;true;true
+1;002;CNDA;"Roos en Lisa hadden aangeboden het huis van oma eens flink op
+te knappen en schoon te maken. Roos schuurde het houtwerk in
+de gang, en Lisa het tapijt in de kamer. Oma wist niet
+wat ze zag en bedankte de dames met een bos bloemen.";true;true;;false;false;false
+0;002;CNDB;"Roos en Lisa hadden aangeboden het huis van oma eens flink op
+te knappen en schoon te maken. Roos schrobde het houtwerk in
+de gang, en Lisa het tapijt in de kamer. Oma wist niet
+wat ze zag en bedankte de dames met een bos bloemen.";true;true;;false;false;false
+0;003;FILL;"Op het introductiekamp van hun nieuwe studie misten Suzy en
+Jochem hun partner meer dan ooit. Suzy zocht een brief van
+haar vriend, en Jochem een foto van zijn vriendin. Gelukkig
+duurde het kamp maar vijf dagen.";true;false;Suzy zocht een foto.;false;false;false
+0;004;FILL;"Martijn en Jessica verwachtten samen hun eerste kindje en vonden
+het leuk zelf babyspulletjes te maken. Martijn zaagde een bedje
+van hout, terwijl Jessica een dekentje van zachte wol breide.
+Het resultaat was een prachtige wieg.";true;false;;false;false;true
+1;003;FILL;"Op het introductiekamp van hun nieuwe studie misten Suzy en
+Jochem hun partner meer dan ooit. Suzy zocht een brief van
+haar vriend, en Jochem een foto van zijn vriendin. Gelukkig
+duurde het kamp maar vijf dagen.";true;false;Suzy zocht een foto.;false;false;false
+1;004;FILL;"Martijn en Jessica verwachtten samen hun eerste kindje en vonden
+het leuk zelf babyspulletjes te maken. Martijn zaagde een bedje
+van hout, terwijl Jessica een dekentje van zachte wol breide.
+Het resultaat was een prachtige wieg.";true;false;;false;false;true
