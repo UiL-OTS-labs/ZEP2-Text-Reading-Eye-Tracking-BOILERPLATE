@@ -18,17 +18,13 @@ HISTORY:
 plugin zep_display;
 
 import std_control;
-//import globaldefs;
-import defs;	// to import globaldefs
+import globaldefs;
 import colors;
 import fonts;
 import grouping;
 import session;
 import participant;
 import researcher;
-import stimuli;
-import output;
-import random;
 import page_settings;
 import test_page_overlay;
 
