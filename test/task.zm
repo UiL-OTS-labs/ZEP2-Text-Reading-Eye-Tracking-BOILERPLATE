@@ -45,14 +45,11 @@ import defs;
 import stimuli;
 import shuffle;
 import output;
-// Defaultly the eyelink is selected. To select another eyetracker comment
-// out (//) the eyelink and remove the '//' from the line your eyetracker.
-//import eyetracker_eyelink;
-import eyetracker_eyelink;
-//import eyetracker_smi;
-//import eyetracker_smi_infant;
-//import eyetracker_tobii;
-import etcal_page;
+// Choose one of the two eyetracker modules, reading usually happens with adult,
+// hence the non infant version is chosen.
+import eyetracker;
+// import eyetracker_infant;/
+import et_setup_page;
 import test_page;
 import question_page;
 import object_info;

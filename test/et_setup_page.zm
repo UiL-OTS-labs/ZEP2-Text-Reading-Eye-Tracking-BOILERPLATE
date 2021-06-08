@@ -1,26 +1,32 @@
 /******************************************************************************\
-FILE:           etcal_page.zm
+FILE:           et_setup_page.zm
 AUTHOR:         Theo Veenker <theo.veenker@beexy.nl>
 ADAPTED BY:     -
 
 DESCRIPTION:
 
-Provides a page object to serve as an eye-tracker calibration background.
+Provides a page object for handling eye-tracker setup and calibration.
 
 
 HISTORY:
-2009-10-05 TV   Created.
+2019-08-09 TV   Created.
 
 \******************************************************************************/
 
 
-Page etcal_page
+Page et_setup_page
 {
+    init()
+    {
+        fill_pattern_color = TEST_PAGE_COLOR;
+    }
+
+
     on_event:key_press()
     {
-        if (eyetracker.handle_key_press()) 
+        if (eyetracker.handle_key_press())
             ;
-        else if (input_key == KEY_F7) 
+        else if (input_key == KEY_F7)
         {
             int modifiers = input_modifiers;
             if (modifiers == INPUT_MOD_CONTROL)
@@ -46,22 +52,29 @@ Page etcal_page
         // Handle 'proceed' message received from eye-tracker.
         if (message_arg == CONTINUE)
             done(CONTINUE);
+//        else if (message_arg == CANCEL)
+//            control.quit_experiment();    // Quit.
+        else if (message_arg == CANCEL)
+            control.stop_experiment();      // Say thanks and quit.
     }
 
 
     void done(int msgid)
     {
-        eyetracker.show_menu = false;
+        eyetracker.show_controls = false;
 
         signal_target(msgid);
         target = null;
+
+        // Enable the mouse cursor again.
+        show_cursor();
     }
 
 
     //==========================================================================
 
 
-    void action(Object caller, 
+    void action(Object caller,
         dur showdelay=-1s, dur fadedur=-1s)
     {
         // Force page show delay and transition duration in sane range.
@@ -78,19 +91,14 @@ Page etcal_page
 
         test_window1.show_page(this, now() + showdelay, fadedur);
 
+        // We don't want the mouse cursor to interfere.
+        hide_cursor();
+
         target = caller;
         eyetracker.target = this;
         eyetracker.target_page = this;
-        eyetracker.show_menu = true;
+        eyetracker.show_controls = true;
 
         test_window1.activate();
-    }
-
-
-    void stop_action()
-    {
-        target = null;
-        eyetracker.target = null;
-        eyetracker.target_page = null;
     }
 }
