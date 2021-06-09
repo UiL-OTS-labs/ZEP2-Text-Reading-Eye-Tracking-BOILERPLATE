@@ -38,7 +38,7 @@ int setup_session()
 {
     final_script_name = script_name();
     generate_object_info = expdb.experiment.status == EXP_STATUS_PREPARING && 
-        expdb.experiment.session.participant_id == "nosweat";
+        expdb.session.participant_id == "nosweat";
 
     // lets just be stubborn when running generate_object_info.zp
     if (!generate_object_info)
