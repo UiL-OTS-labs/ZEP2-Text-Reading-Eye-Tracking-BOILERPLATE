@@ -100,7 +100,7 @@ Block task
                 true);
 
             pause_page.action(this);
-            control.button_box.enable_all_buttons(CONTINUE);
+            control.enable_all_buttons(CONTINUE);
         }
     }
 
@@ -324,7 +324,7 @@ Block task
                 true);
 
             pause_page.action(this);
-            control.button_box.enable_all_buttons(CONTINUE);
+            control.enable_all_buttons(CONTINUE);
         }
     }
 
