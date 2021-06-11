@@ -132,12 +132,12 @@ Page test_page
                         test_page.export_as_png(fn);
 
                         int j;
-                        int nlines = num_lines();
+                        int nlines = num_lines;
                         int n;
                         while (n < nlines)
                         {
                             int sentencelength = length(line_string(n));
-                            int nitems = num_items(n);
+                            int nitems = num_items[n];
                             int i;                              
                             while (i < nitems)
                             {
