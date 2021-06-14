@@ -109,7 +109,7 @@ Block task
     {
         on_event:entry()
         {
-            etcal_page.action(this);
+            et_setup_page.action(this);
         }
     }
 
@@ -209,7 +209,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
@@ -261,7 +261,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
@@ -333,7 +333,7 @@ Block task
     {
         on_event:entry()
         {
-            etcal_page.action(this);
+            et_setup_page.action(this);
         }
     }
 
@@ -454,7 +454,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
@@ -506,7 +506,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
