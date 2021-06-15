@@ -15,8 +15,8 @@ HISTORY:
 \******************************************************************************/
 
 // Import the module corresponding to the eye-tracker device being used.
-import std_et_dummy;
-//import std_et_eyelink;
+// import std_et_dummy;
+import std_et_eyelink;
 //import std_et_tobii;
 
 
