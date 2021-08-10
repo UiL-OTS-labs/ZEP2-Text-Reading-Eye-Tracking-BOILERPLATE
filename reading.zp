@@ -125,9 +125,6 @@ Experiment experiment
 
         on_event:exit()
         {
-            // We're closing. Retrieve eye-movement data file recorded.
-            test::eyetracker.retrieve_data_files();
-
             // Save object information (when in object info generation mode).
             test::object_info_save();
         }

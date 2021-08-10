@@ -35,6 +35,7 @@ EyeTracker eyetracker
         // Link to eye-tracker device interface. This device produces our
         // gaze samples and all other events (see below).
         source = eyetracker_device;
+        eyetracker_device.optimal_eye_to_camera_distance = 520;
 
         // Duration of attention target phase, focus target phase and
         // wake-up target (if shown).
@@ -78,7 +79,7 @@ EyeTracker eyetracker
         // Where to store native format eye data files if supported by
         // eye-tracker device. Not defining this directory turns off the
         // creation of native format eye data files.
-//        output_dir                  = data_dir() + script_name() + "/dat/";
+        output_dir                  = data_dir() + script_name() + "/dat/";
     }
 
 

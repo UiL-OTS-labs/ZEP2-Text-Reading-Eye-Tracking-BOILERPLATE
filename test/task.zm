@@ -68,6 +68,9 @@ Block task
 
     on_event:exit()
     {
+        // We're closing. Retrieve eye-movement data file recorded.
+        test::eyetracker.retrieve_data_files();
+
         eyetracker.cleanup();
     }
 
