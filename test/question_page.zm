@@ -134,12 +134,12 @@ Page question_page
                         question_page.export_as_png(fn);
 
                         int j;
-                        int nlines = num_lines();
+                        int nlines = num_lines;
                         int n;
                         while (n < nlines)
                         {
                             int sentencelength = length(line_string(n));
-                            int nitems = num_items(n);
+                            int nitems = num_items[n];
                             int i;                              
                             while (i < nitems)
                             {
@@ -366,9 +366,9 @@ Page question_page
 
         // Enable button-box buttons 0 (no) and 1 (yes).
         control.target = this;
-        control.button_box.disable_buttons();
-        control.button_box.enable_button(0, 0); // button 0 maps to 0
-        control.button_box.enable_button(2, 1); // button 1 maps to 1
+        control.disable_buttons();
+        control.enable_button(0, 0); // button 0 maps to 0
+        control.enable_button(2, 1); // button 1 maps to 1
     }
 
     void set_list_index(int i)
@@ -386,7 +386,7 @@ Page question_page
         test_page_overlay.cleanup();
         listindex = -1;
 
-        control.button_box.disable_buttons();
+        control.disable_buttons();
         control.target = null;
     }
 

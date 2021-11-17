@@ -45,14 +45,11 @@ import defs;
 import stimuli;
 import shuffle;
 import output;
-// Defaultly the eyelink is selected. To select another eyetracker comment
-// out (//) the eyelink and remove the '//' from the line your eyetracker.
-//import eyetracker_eyelink;
-import eyetracker_eyelink;
-//import eyetracker_smi;
-//import eyetracker_smi_infant;
-//import eyetracker_tobii;
-import etcal_page;
+// Choose one of the two eyetracker modules, reading usually happens with adult,
+// hence the non infant version is chosen.
+import eyetracker;
+// import eyetracker_infant;/
+import et_setup_page;
 import test_page;
 import question_page;
 import object_info;
@@ -66,6 +63,15 @@ Block task
         // Randomize test items table.
         if (shuffle_test_items(selected_group) != OK)
             terminate;
+        eyetracker.setup();
+    }
+
+    on_event:exit()
+    {
+        // We're closing. Retrieve eye-movement data file recorded.
+        test::eyetracker.retrieve_data_files();
+
+        eyetracker.cleanup();
     }
 
     Part instructions
@@ -103,7 +109,7 @@ Block task
                 true);
 
             pause_page.action(this);
-            control.button_box.enable_all_buttons(CONTINUE);
+            control.enable_all_buttons(CONTINUE);
         }
     }
 
@@ -112,7 +118,7 @@ Block task
     {
         on_event:entry()
         {
-            etcal_page.action(this);
+            et_setup_page.action(this);
         }
     }
 
@@ -129,18 +135,13 @@ Block task
 //            int listnum = selected_group + 1;
 //            int recordingnum = 0;
 //            string edfname =
-//                format(expdb.experiment.session.id, 4) + "_" +
+//                format(expdb.session.id, 4) + "_" +
 //                format(listnum, 2) + "_" +
 //                format(recordingnum, 2);
 //
 //            // Let eye-tracker open a data file.
-//            eyetracker.open_data_file(
-//                edfname,
-//                expdb.experiment.id,
-//                expdb.researcher.id,
-//                expdb.participant.id,
-//                expdb.experiment.session.id,
-//                listnum, recordingnum);
+//            eyetracker.open_data_file(edfname);
+//
 //            eyetracker.print_to_data_file("Text Reading Experiment");
 
             // Prepare test page: progress bar enabled.
@@ -212,7 +213,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
@@ -264,7 +265,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
@@ -327,7 +328,7 @@ Block task
                 true);
 
             pause_page.action(this);
-            control.button_box.enable_all_buttons(CONTINUE);
+            control.enable_all_buttons(CONTINUE);
         }
     }
 
@@ -336,7 +337,7 @@ Block task
     {
         on_event:entry()
         {
-            etcal_page.action(this);
+            et_setup_page.action(this);
         }
     }
 
@@ -356,18 +357,14 @@ Block task
             int listnum = selected_group + 1;
             int recordingnum = 1;
             string edfname =
-                format(expdb.experiment.session.id, 4) + "_" +
+                format(expdb.session.id, 4) + "_" +
                 format(listnum, 2) + "_" +
                 format(recordingnum, 2);
 
             // Let eye-tracker open a data file.
             eyetracker.open_data_file(
-                edfname,
-                expdb.experiment.id,
-                expdb.researcher.id,
-                expdb.participant.id,
-                expdb.experiment.session.id,
-                listnum, recordingnum);
+                edfname
+                );
             eyetracker.print_to_data_file("Text Reading Experiment");
 
             // Prepare test page: progress bar enabled.
@@ -385,7 +382,7 @@ Block task
             eyetracker.close_data_file();
 
             // Save test output table as CSV file.
-            test_output_save();
+            save_trial_data();
         }
 
 
@@ -457,7 +454,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 
@@ -509,7 +506,7 @@ Block task
             {
                 on_event:entry()
                 {
-                    etcal_page.action(this);
+                    et_setup_page.action(this);
                 }
             }
 

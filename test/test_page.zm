@@ -132,12 +132,12 @@ Page test_page
                         test_page.export_as_png(fn);
 
                         int j;
-                        int nlines = num_lines();
+                        int nlines = num_lines;
                         int n;
                         while (n < nlines)
                         {
                             int sentencelength = length(line_string(n));
-                            int nitems = num_items(n);
+                            int nitems = num_items[n];
                             int i;                              
                             while (i < nitems)
                             {
@@ -308,9 +308,9 @@ Page test_page
 
         // Enable button-box button 2 (continue).
         control.target = this;
-        control.button_box.disable_buttons();
-//        control.button_box.enable_all_buttons(0);
-        control.button_box.enable_button(1, 0);
+        control.disable_buttons();
+//        control.enable_all_buttons(0);
+        control.enable_button(1, 0);
     }
 
     // Sets the list index, this is used when generating objects.
@@ -330,7 +330,7 @@ Page test_page
         test_page_overlay.cleanup();
         listindex = -1;
 
-        control.button_box.disable_buttons();
+        control.disable_buttons();
         control.target = null;
     }
 

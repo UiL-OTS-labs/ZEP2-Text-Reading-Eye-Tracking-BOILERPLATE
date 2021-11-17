@@ -117,7 +117,8 @@ bool object_is_on_last_line(ObjectInfo[] objects, ObjectInfo obt)
  */
 void object_info_correct_height(int listindex, int spacing)
 {
-    ObjectInfo[] objects = object_info[listindex];
+    ObjectInfo[] objects;
+    objects = object_info[listindex];
     int height=0;
     int i = 0;
     /* Get the largest height and maximum linenumber. */
