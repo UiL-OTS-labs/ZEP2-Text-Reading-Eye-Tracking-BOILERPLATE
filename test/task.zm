@@ -365,7 +365,26 @@ Block task
             eyetracker.open_data_file(
                 edfname
                 );
-            eyetracker.print_to_data_file("Text Reading Experiment");
+
+            // Start eye data record stream.
+            eyetracker.start_stream();
+
+            // Log some information.
+            eyetracker.add_message(EYE_DATA_DISPLAY);
+            eyetracker.add_message(EYE_DATA_TRACKBOX);
+            eyetracker.add_message(EYE_DATA_APPLICATION);
+            eyetracker.add_message(EYE_DATA_TRACKER);
+            eyetracker.add_message(EYE_DATA_EXPERIMENT, expdb.experiment.id);
+            eyetracker.add_message(EYE_DATA_RESEARCHER, expdb.researcher.id);
+            eyetracker.add_message(EYE_DATA_PARTICIPANT, expdb.participant.id);
+            if (expdb.group != null)
+                eyetracker.add_message(EYE_DATA_GROUP, expdb.group.id);
+            eyetracker.add_message(EYE_DATA_SESSION, string(expdb.session.id));
+            eyetracker.add_message(EYE_DATA_LIST, string(listnum));
+            eyetracker.add_message(EYE_DATA_RECORDING, string(recordingnum));
+            eyetracker.add_message(EYE_DATA_TITLE, "Text Reading Experiment");
+
+            // eyetracker.print_to_data_file("Text Reading Experiment");
 
             // Prepare test page: progress bar enabled.
             //test_page.setup(num_cycles);
