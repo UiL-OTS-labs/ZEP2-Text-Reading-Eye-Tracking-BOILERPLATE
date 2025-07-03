@@ -1,0 +1,61 @@
+/******************************************************************************\
+FILE:           et_dummy_settings_infant.zm
+AUTHOR:         Theo Veenker <theo.veenker@beexy.nl>
+ADAPTED BY:     -
+
+DESCRIPTION:
+
+Defines miscellaneous settings for the dummy eye-tracker device. These
+settings are considered suitable for testing infants. YMMV.
+
+\******************************************************************************/
+
+
+// Calibration type.
+const CalibrationType CALIBRATION_TYPE          = CALIBRATION_TYPE_5A;
+
+// Manual or auto-paced calibration. For infants you may want to trigger
+// calibration targets manually.
+const bool      MANUAL_CALIBRATION              = true;
+
+// Calibration target distance from screen edge. Specify as normalized screen
+// coordinates.
+const real      CALIBRATION_TARGET_ORIGIN_X     = 0.2;
+const real      CALIBRATION_TARGET_ORIGIN_Y     = 0.2;
+
+// Calibration result analysis parameters. The quality of a single calibration
+// point can be bad (i.e. failed), poor, fair or good. To determine the quality
+// of a calibration target we do this:
+//   let N be the number of valid gaze samples collected by the eye-tracker
+//   for given target and let E be the average distance (as a ratio) from the
+//   target, then
+//   if N = 0                                       -> bad/failed
+//   otherwise if N <= calibration_min_samples      -> poor
+//   otherwise if E > calibration_max_error_fair    -> poor
+//   otherwise if E > calibration_max_error_good    -> fair
+//   otherwise                                      -> good
+const int       CALIBRATION_MIN_SAMPLES         = 0;
+const real      CALIBRATION_MAX_ERROR_FAIR      = 10.0/300.0;   // 10mm/300mm
+const real      CALIBRATION_MAX_ERROR_GOOD      = 5.0/300.0;    // 5mm/300mm
+
+// Gaze analyzer settings. If tracker produces rather noisy gaze samples then
+// a low move_threshold won't work (try > 1deg). To reduce the gaze noise
+// you can lowpass the samples by selecting a sample weight < 1.0.
+//   default settings:                              100ms, 1deg
+//   coarse settings (for picture stimuli):         200ms, 3deg
+//   fine settings (for text stimuli):              50ms, 0.5deg
+const dur       MIN_FIXATION_DURATION           = 200ms;
+const real      MOVE_THRESHOLD_DEG              = 3.0;
+const real      GAZE_SAMPLE_WEIGHT              = 1.0;
+
+// Minimum duration to fixate on drift-check target and max distance between
+// target center and average gaze point (in degrees).
+const dur       MIN_TARGET_FIXATION_DURATION    = 750ms;
+const real      TARGET_AOI_RADIUS_DEG           = 2.0;
+
+
+// Fixation and blink update interval during tracking. 0 means off.
+const dur       UPDATE_INTERVAL                 = 0ms;
+
+// Minimum interval between head samples. 0 means off. (not implemented ATM)
+const dur       HEAD_UPDATE_INTERVAL            = 0ms;
