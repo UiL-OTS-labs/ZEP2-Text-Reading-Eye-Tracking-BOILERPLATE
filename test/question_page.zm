@@ -119,6 +119,8 @@ Page question_page
                 on_event:start()
                 {
                     // while generating objecs we don't record any eyemovements.
+                    question_page.layout.show_buttons();
+
                     if (!generate_object_info) {
                         int dt = int(now() - start_time);
                         eyetracker.print_to_data_file(start_time, 
@@ -234,12 +236,25 @@ Page question_page
             return canvas.stimulus.expected_start_time;
         }
 
+        void hide_buttons()
+        {
+            layout.buttons.button1.is_visible = false;
+            layout.buttons.button2.is_visible = false;
+        }
+        
+        void show_buttons()
+        {
+            layout.buttons.button1.is_visible = true;
+            layout.buttons.button2.is_visible = true;
+        }
+
 
         void reset()
         {
             full_abort();
 
             canvas.stimulus.is_visible = false;
+            hide_buttons();
         }
     }
 
@@ -369,6 +384,8 @@ Page question_page
         control.disable_buttons();
         control.enable_button(0, 0); // button 0 maps to 0
         control.enable_button(2, 1); // button 1 maps to 1
+
+        question_page.layout.hide_buttons();
     }
 
     void set_list_index(int i)
