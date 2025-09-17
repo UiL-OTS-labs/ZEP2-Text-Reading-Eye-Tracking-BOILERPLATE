@@ -564,7 +564,7 @@ Block task
                         string(item.id) + " " +
                         string(test.cycle + 1) + " " +
                         string(item.id) + " " +
-                        string(item.type));
+                        "Q" + string(item.type));
 
                     question_page.cleanup();
                 }
