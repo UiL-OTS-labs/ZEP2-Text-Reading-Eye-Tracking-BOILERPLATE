@@ -398,6 +398,7 @@ Block task
             test_page.cleanup();
 
             eyetracker.abort();
+            eyetracker.stop_stream();
             eyetracker.close_data_file();
 
             // Save test output table as CSV file.
