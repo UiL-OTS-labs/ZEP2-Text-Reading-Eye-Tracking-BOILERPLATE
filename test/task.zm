@@ -132,18 +132,6 @@ Block task
         {
             num_cycles = prac_items.size;
 
-//            int listnum = selected_group + 1;
-//            int recordingnum = 0;
-//            string edfname =
-//                format(expdb.session.id, 4) + "_" +
-//                format(listnum, 2) + "_" +
-//                format(recordingnum, 2);
-//
-//            // Let eye-tracker open a data file.
-//            eyetracker.open_data_file(edfname);
-//
-//            eyetracker.print_to_data_file("Text Reading Experiment");
-
             // Prepare test page: progress bar enabled.
             //test_page.setup(num_cycles);
             // Prepare test page: progress bar disabled.
@@ -156,7 +144,6 @@ Block task
             test_page.cleanup();
 
             eyetracker.abort();
-//            eyetracker.close_data_file();
         }
 
 
@@ -166,17 +153,6 @@ Block task
             {
                 item = prac_items[practice.cycle];
 
-//                // Add begin of trial message to eye-tracker data file for
-//                // analysis with the Fixation tool (Cozijn 1994).
-//                eyetracker.print_to_data_file("trialbeg " +
-//                    string(item.id) + " " +
-//                    string(practice.cycle + 1) + " " +
-//                    string(item.id) + " " +
-//                    string(item.type));
-//                eyetracker.print_to_data_file("plafile " +
-//                    string(item.type) +
-//                    string(item.id) + ".bmp");
-
                 // Show information on eye-tracker screen.
                 eyetracker.set_tracker_status_message("Practice trial " +
                     string(practice.cycle+1));
@@ -185,13 +161,6 @@ Block task
 
             on_event:exit()
             {
-//                // Add end of trial message.
-//                eyetracker.print_to_data_file("trialend " +
-//                    string(item.id) + " " +
-//                    string(practice.cycle + 1) + " " +
-//                    string(item.id) + " " +
-//                    string(item.type));
-
                 // Clear eye-tracker status line.
                 eyetracker.set_tracker_status_message("");
             }
