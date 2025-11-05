@@ -332,7 +332,8 @@ Block task
 
             // Let eye-tracker open a data file.
             eyetracker.open_data_file(
-                edfname
+                edfname,
+                expdb.session.id
                 );
 
             // Start eye data record stream.
