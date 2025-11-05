@@ -393,17 +393,6 @@ Block task
                 output.qrt = -9999;
                 output.qcorrect = -1;
 
-                // Add begin of trial message to eye-tracker data file for
-                // analysis with the Fixation tool (Cozijn 1994).
-                eyetracker.print_to_data_file("trialbeg " +
-                    string(item.id) + " " +
-                    string(test.cycle + 1) + " " +
-                    string(item.id) + " " +
-                    string(item.type));
-                eyetracker.print_to_data_file("plafile " +
-                    string(item.type) +
-                    string(item.id) + ".bmp");
-
                 // Show information on eye-tracker screen.
                 eyetracker.set_tracker_status_message("Test trial " +
                     string(test.cycle+1));
@@ -414,13 +403,6 @@ Block task
             {
                 // Add new row to test output table.
                 test_output_append(output);
-
-                // Add end of trial message.
-                eyetracker.print_to_data_file("trialend " +
-                    string(item.id) + " " +
-                    string(test.cycle + 1) + " " +
-                    string(item.id) + " " +
-                    string(item.type));
 
                 // Clear eye-tracker status line.
                 eyetracker.set_tracker_status_message("");
@@ -455,12 +437,30 @@ Block task
                     //test_page.setup(test.num_cycles);
                     test_page.setup(-1);
 
+                    // Add begin of trial message to eye-tracker data file for
+                    // analysis with the Fixation tool (Cozijn 1994).
+                    eyetracker.print_to_data_file("trialbeg " +
+                        string(item.id) + " " +
+                        string(test.cycle + 1) + " " +
+                        string(item.id) + " " +
+                        string(item.type));
+                    eyetracker.print_to_data_file("plafile " +
+                        string(item.type) +
+                        string(item.id) + ".bmp");
+
                     test_page.action(this, item, reference_time, test.cycle);
                 }
 
 
                 on_event:exit()
                 {
+                    // Add end of trial message.
+                    eyetracker.print_to_data_file("trialend " +
+                        string(item.id) + " " +
+                        string(test.cycle + 1) + " " +
+                        string(item.id) + " " +
+                        string(item.type));
+
                     output.rt = test_page.response.rt;
                 }
             }
@@ -506,6 +506,17 @@ Block task
                 {
                     //question_page.setup(test.num_cycles);
                     question_page.setup(-1);
+                    
+                    // Add begin of trial message to eye-tracker data file for
+                    // analysis with the Fixation tool (Cozijn 1994).
+                    eyetracker.print_to_data_file("trialbeg " +
+                        string(item.id) + " " +
+                        string(test.cycle + 1) + " " +
+                        string(item.id) + " " +
+                        "Q" + string(item.type));
+                    eyetracker.print_to_data_file("plafile " +
+                        "Q" + string(item.type) +
+                        string(item.id) + ".bmp");
 
                     question_page.action(this, item, reference_time,
                         test.cycle);
@@ -517,6 +528,13 @@ Block task
                     output.qvalue = question_page.response.value;
                     output.qrt = question_page.response.rt;
                     output.qcorrect = question_page.response.correct;
+                    
+                    // Add end of trial message.
+                    eyetracker.print_to_data_file("trialend " +
+                        string(item.id) + " " +
+                        string(test.cycle + 1) + " " +
+                        string(item.id) + " " +
+                        "Q" + string(item.type));
 
                     question_page.cleanup();
                 }
