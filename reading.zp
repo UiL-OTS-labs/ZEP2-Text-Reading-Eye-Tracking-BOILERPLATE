@@ -27,7 +27,7 @@ HISTORY:
 
 \******************************************************************************/
 
-requires 2.6;
+requires 2.7;
 
 import std_windows1;
 import std_texts_nl;
